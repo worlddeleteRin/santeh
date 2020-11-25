@@ -1,0 +1,50 @@
+@import './vars.scss';
+
+.categories__main {
+    background-color: $bg-nice;
+}
+
+.categories__main__content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.category__card {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 3px;
+    max-width: 280px;
+    width: 33%;
+    min-height: 100px;
+    background-color: white;
+    text-align: center;
+    margin: 5;
+    // border: 2px solid black;
+    box-shadow: 0px 0px 21px -17px rgba(0,0,0,0.75);
+    &:hover {
+        background-color: $main-color;
+        color: white;
+    }
+}
+
+@media (max-width: 885px) {
+    .category__card {
+        width: 40%;
+        max-width: 500px;
+    }
+}
+
+.category__title {
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    span {
+        font-size: 18px;
+        padding: 0 5;
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "python.pythonPath": "/usr/bin/python3",
+    "git.ignoreLimitWarning": true,
+    "jupyter.jupyterServerType": "local"
+}

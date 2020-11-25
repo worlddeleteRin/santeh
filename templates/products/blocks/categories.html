@@ -1,0 +1,29 @@
+<div class="categories__main">
+
+    <div class="cart__main__title">
+
+        {% include './space20.html' %}
+        <div class="nice__title__center">
+            Категории товаров
+        </div>
+    </div>
+
+    {% include './space10.html' %}
+
+    <div class="categories__main__content">
+        {% for category in categories  %}
+            <a class="category__card"
+            href="{% url 'products:category' category.id %}">
+                <div class="category__title">
+                    <span>
+                        {{ category.name }}
+                    </span>
+                </div>
+            </a>
+        {% endfor %}
+   
+
+</div>
+
+{% include './space20.html' %}
+</div>

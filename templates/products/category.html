@@ -1,0 +1,178 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="nice__title__center">
+    {{ current_cat.name }}
+</div>
+
+
+
+{% include './blocks/space20.html' %}
+
+<div class="category__main__content">
+
+{% include './blocks/category_container.html' %}
+
+</div>
+
+<script>
+    // loadProducts()
+
+    function loadProducts() {
+        console.log('start function')
+        $.ajax({
+            url: "{% url 'products:load_products_ajax' %}", 
+            data: {
+
+            },
+            success: function() {
+                $(".products__list__wrapper").html(data)
+            }
+        })
+    }
+
+    //filterProducts()
+
+    function filterProducts() {
+        var filters_all = collectFilters()
+        // console.log(filters_all)
+
+        const csrftoken = Cookies.get('csrftoken');
+        // console.log(csrftoken)
+        // console.log("{{current_cat.id}}")
+        $.ajax({
+            // type: 'POST',
+            // headers: {
+            //     "X-CSRFToken": csrftoken,
+            // },
+            url: "{% url 'products:category' current_cat.id %}?" + 
+            "filters=" + filters_all,
+            data: {
+                'current_cat': "{{ current_cat.id }}", 
+                'loading_filters': 'no',
+            },
+            success: function(data) {
+                // console.log(data['products'])
+                $(".products__list__wrapper").html(data) 
+                var path = "{{ current_cat.id }}" + "?filters=" + 
+                filters_all
+                window.history.pushState({}, null, path),
+                // $(".category__main__content").html(data)
+                $(".endless_more").html("Показать еще")
+            } 
+        })
+    }
+
+    function collectFilters() {
+        // get all filter items on the page
+        items = $(".filter__item")
+        // console.log(items)
+
+        var filter_items  = []
+        for (k = 0; k < items.length; k++) {
+            
+            var curr_item = $(items[k])
+
+            content_items = $(curr_item).children('.filter__content').children('.filter__content__item')
+            var allcontents = []
+            for (i = 0; i < content_items.length; i++) {
+                if ($(content_items[i]).hasClass("active")) {
+
+                    cont_val = $(content_items[i]).attr("value")
+                    allcontents = allcontents.concat(cont_val)
+                }
+            }
+            var attr_id = $(curr_item).attr("value")
+            if (allcontents.length > 0) {
+                var contents_str = attr_id + '-' + allcontents.join('-')
+                // console.log(contents_str)
+                filter_items = filter_items.concat(contents_str)
+            }
+
+        }
+        // console.log(filter_items)
+
+        filters_all = filter_items.join('_')
+        return filters_all
+    }
+
+    function getFilters(filters_all) {
+        // console.log(filters_all)
+
+        const csrftoken = Cookies.get('csrftoken');
+        $.ajax({
+            // type: 'GET',
+            // headers: {
+            //     "X-CSRFToken": csrftoken,
+            // },
+            url: "{% url 'products:filter_products_ajax' %}?" + 
+            "filters=" + filters_all,
+            data: {
+                'current_cat': "{{ current_cat.id }}", 
+                'loading_filters': 'yes',
+            },
+            success: function(data) {
+                var active_filters = data['active_filters']
+                var checked_filters = data['checked_filters']
+                filterFilters(active_filters, checked_filters)
+            } 
+        })
+    }
+    function filterFilters(active_filters, checked_filters) {
+        if (active_filters.length > 0) {
+            console.log(checked_filters)
+            var filters = $(".filter__content__item")
+            for(i = 0; i < filters.length; i++) {
+                var current_filter = $(filters[i])
+                var current_filter_value = $(filters[i]).attr("value")
+                var contains = active_filters.includes(parseInt(current_filter_value))
+                var is_active = checked_filters.includes(current_filter_value)
+
+                if (contains == false) {
+                    $(current_filter).addClass("deactive_filter")
+                } else {
+                    $(current_filter).removeClass("deactive_filter")
+                }
+                if (is_active) {
+                    $(current_filter).addClass("active")
+                }
+            }
+        } else {
+            $(".filter__content__item").removeClass("deactive_filter")
+        }
+
+        // sort active and deactive filters, so deactive will be on bottom
+        var all_f_contents = $(".filter__content")
+        for (i = 0; i < all_f_contents.length; i++) {
+            var checked_items = []
+            var active_items = []
+            var deactive_items = []
+            var current_content = $(all_f_contents[i])
+            var current_content_children = $(all_f_contents[i]).children()
+            for(j=0; j < current_content_children.length; j++) {
+                current_item = $(current_content_children[j])
+                if ($(current_item).hasClass("active")) {
+                    checked_items = checked_items.concat($(current_item))
+                } else if ($(current_item).hasClass("deactive_filter")) {
+                    deactive_items = deactive_items.concat($(current_item))
+                } else {
+                    active_items = active_items.concat($(current_item))
+                }
+            }
+            var all_filters = []
+            all_filters = all_filters.concat(checked_items, active_items, deactive_items)
+            // console.log(all_filters)
+            $(current_content).html(all_filters)
+        }
+    }
+
+    
+</script>
+
+
+{% endblock content %}
+

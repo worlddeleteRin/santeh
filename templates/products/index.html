@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+   {% comment %} {{ session_key }} {% endcomment %}
+
+   {% include './blocks/main__slider.html' %}
+
+   {% include './blocks/banner1.html' %}
+
+   {% include './blocks/space20.html' %}
+
+   {% include './blocks/categories.html' %}
+
+   {% include './blocks/space20.html' %}
+
+   {% include './blocks/products_slider.html' %}
+
+   {% include './blocks/space20.html' %}
+
+
+      <div class="products__list__wrapper">
+
+         {% include './blocks/products_list.html' %} 
+ 
+      </div> 
+
+   
+{% endblock content %}

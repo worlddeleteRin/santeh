@@ -1,0 +1,103 @@
+{% load products_extras %}
+
+
+<div class="filter__wrapper">
+
+    <div class="filter__reset__button">
+        <span class="filter__reset__button__link">
+            Сбросить фильтры
+        </span>
+    </div>
+    
+
+    {% for attr in current_cat.attribute_set.all %}
+
+        {% if attr.name not in not_active_filters  %}
+
+        <div class="filter__item active"
+        value="{{ attr.id }}">
+            <div class="filter__title">
+                <span>
+                {{ attr }}
+                </span>
+                <i class="fa fa-chevron-up
+                toogle_filter"></i>
+            </div>
+            
+
+                {% comment %} {% if attr.attributeitem_set.all > 0 %} {% endcomment %}
+                {% comment %} {% endif %} {% endcomment %}
+                {% if attr.attributeitem_set.all|length < 15 %}
+
+                <div class="filter__content">
+                {% for attr_item in attr.attributeitem_set.all  %}
+                        {% include './short_filter.html' %}
+                {% endfor %}
+                </div>
+                    {% else %}
+                        {% comment %} <div class="filter__large"> {% endcomment %}
+                        <div class="filter__content filter__content__large">
+                            {% for attr_item in attr.attributeitem_set.all %}
+                            
+                            <div class="filter__content__item"
+                            value="{{ attr_item.id }}">
+                                <div class="filter__content__item__checkbox">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <span>
+                                {{ attr_item.name }}
+                                </span>
+                            </div>
+
+                            {% endfor %}
+                        </div>
+                        {% comment %} </div> {% endcomment %}
+                {% endif %}
+
+            
+        </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+    
+</div>
+
+
+<script>
+
+    $(document).ready(function() {
+        var loc = window.location.href.split("?")[1]
+        if (loc) {
+            filters = loc.split("=")[1]
+            getFilters(filters)
+        }
+    })
+
+    $(".filter__title").click(function() {
+        var parent = $(this).parent()
+        // console.log(parent)
+        $(parent).toggleClass("active")
+        $(this).children('i').toggleClass('fa-rotate-180')
+    })
+    $("body").on( 'click', '.filter__content__item', function() {
+        console.log('clicked to filter')
+        if ($(this).hasClass("deactive_filter")) {
+        } else {
+            $(this).toggleClass("active")
+            filterProducts()
+            var filters_all = collectFilters()
+            getFilters(filters_all)
+        }
+    })
+    
+    $(".filter__reset__button__link").click(function() {
+        $(".filter__content__item").removeClass("active")
+        filterProducts()
+        var filters_all = collectFilters()
+        getFilters(filters_all)
+    })
+
+
+</script>

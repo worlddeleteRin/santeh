@@ -1,0 +1,45 @@
+<!-- {% load el_pagination_tags %} -->
+<div class="category__container">
+
+    <div class="filter__button">
+        <span class="filter__button__link">
+            <i class="fa fa-filter">
+            </i>
+            Фильтры
+        </span>
+    </div>
+
+    {% include './space20.html' %}
+
+    {% include './filter_block.html' %}
+
+    <div class="category__products">                    
+
+        <div class="products__list__wrapper">
+
+        {% include './products_list.html' %} 
+
+        </div>
+        
+        </div>
+
+    </div>
+
+</div>
+
+<div class="filter__wrapper__back">
+</div>
+
+<script>
+
+    $(".filter__button__link").click(function() {
+        $(".filter__wrapper").toggleClass("show")
+        $(".filter__wrapper__back").toggleClass("show")
+        $("body").toggleClass("hidden")
+    })
+    $(".filter__wrapper__back").click(function() {
+        $(".filter__wrapper").toggleClass("show")
+        $(".filter__wrapper__back").toggleClass("show")
+        $("body").toggleClass("hidden")
+    })
+</script>

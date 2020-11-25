@@ -1,0 +1,87 @@
+{% load products_extras %}
+{% load static %}
+<div class="product__item">
+    <div class="product__item__image">
+        
+
+        {% if product.has_sale %}
+        {% include './svg_fire.html' %}
+        <div class="product__item__sale_hint">
+            <span>
+                - {{ product.discount_perc }} %
+            </span>
+        </div>
+        {% endif %}
+
+        {% modify_imgsrc product.imgsrc as imgsrc %}
+        <a href="{% url 'products:product' product.id %}">
+        <img src="{% static 'images/products/'%}{{imgsrc}}" alt="">
+        </a>
+    </div>
+
+    <div class="product__item__info">
+
+        <div class="product__item__price">
+        
+        {% if product.has_sale %}
+        
+            <span class="product__item__price__sale"> 
+                {{ product.sale_price }} Р
+            </span>
+            <span class="product__item__price__regular">
+                {{ product.price }}
+            </span>
+            {% else %}
+            <span class="product__item__price__regular2"> 
+                {{ product.price }} Р
+            </span>
+        {% endif %}
+            <div class="product__item__like">
+                <!-- <i class="gg-heart"></i> -->
+            {% is_in_favorite product.id session_key as in_favorite %}
+                {% if in_favorite %}
+                <i class="fas fa-heart
+                    add_delete_favorite
+                    red"
+                    value="{{ product.id }}">
+                </i>
+                    {% else %}
+                    <i class="fas fa-heart
+                    add_delete_favorite
+                    white"
+                    value="{{ product.id }}">
+                    </i>
+                {% endif %}
+               
+                </i>
+            </div>
+        </div>
+        <a class="product__item__name"
+        href="{% url 'products:product' product.id %}">
+            {{ product.name }}
+        </a>
+        <div class="product__item__addcart
+        product__addtocart__global"
+        value="{{ product.id }}">
+        {% is_in_cart product.id cart as in_cart %} 
+            {% if in_cart %}
+            <span class="in__cart__buttonstyle">
+            Удалить с корзины
+            </span>
+            {% else %}
+                <span class="not__incart__buttonstyle">
+                    В корзину
+                </span>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
