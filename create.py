@@ -4,7 +4,7 @@ import unidecode
 from django import db
 
 # path = '/Users/noname/jff/santeh/santeh_scrape/test4.csv'
-path = '/Users/noname/jff/santeh/santeh_scrape/new_goods_main.csv'
+path = '/Users/noname/jff/santeh_main/host/santeh_scrape/new_goods_main.csv'
 
 def createProducts():
     db.connections.close_all()

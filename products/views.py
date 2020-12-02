@@ -257,10 +257,9 @@ def filter_products_ajax(request):
         #     attribute_items.append(a.attributeitem_set.all())
         # print(attribute_items)
         products_ids = list(products.values_list('id', flat = True))
-        attr = Attributeitem.objects.filter(
+        attr = list(Attributeitem.objects.filter(
             product__id__in = products_ids
-        )
-        attr = list(attr.values_list('id', flat = True))
+        ).values_list('id', flat = True))
         # print('attr is: ', attr)
         # attr = []
         # for product in products: 

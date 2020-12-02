@@ -87,10 +87,24 @@ WSGI_APPLICATION = 'santeh.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'u0609325_django_santeh',
+    'USER': 'u0609325_santeh',
+    'PASSWORD': "Worldhack0Rin",
+    'HOST': "31.31.198.93",
+    'PORT': "",
+    'OPTIONS': {
+    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    }
     }
 }
 
