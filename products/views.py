@@ -249,17 +249,33 @@ def filter_products_ajax(request):
             'current_cat': current_cat,
         })
     else:
-        attr = []
+        attr = ['']
         print('start getting active filters')
         # attribute_items = []
         # attributes = current_cat.attribute_set.all()
         # for a in attributes:
         #     attribute_items.append(a.attributeitem_set.all())
         # print(attribute_items)
+
+        # more quick method, but need to fix arguments error in sqlite3.
         products_ids = list(products.values_list('id', flat = True))
         attr = list(Attributeitem.objects.filter(
             product__id__in = products_ids
         ).values_list('id', flat = True))
+
+        # more slow method to filter products
+        # for product in products:
+        #     s = list(product.attributeitem_set.all().values_list('id', flat = True))
+        #     attr.append(s)
+        # print('reached', attr)
+                        
+        
+        # print('attributes filters', attr)
+
+        # products_ids = list(products.values_list('id', flat = True))
+        # attr = list(Attributeitem.objects.filter(
+        #     product__id__in = products_ids
+        # ).values_list('id', flat = True))
         # print('attr is: ', attr)
         # attr = []
         # for product in products: 
