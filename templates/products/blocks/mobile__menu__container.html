@@ -1,0 +1,51 @@
+
+<div class="mobile__menu__container__wrapper">
+</div>
+
+<div class="mobile__menu__container__close">
+    <i class="fa fa-close mmc__close"></i>
+</div>
+
+<div class="mobile__menu__container">
+    <div class="mmc__title">
+        <span>
+            Каталог товаров
+        </span>
+    </div>
+    <div class="mmc__categories">
+        {% for category in categories  %}
+            <a class="mmc__category"
+            href="{% url 'products:category' category.id %}">
+                <span>
+                    {{ category.name }}
+                </span>
+                <i class="fa fa-chevron-right"></i>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $("#menu__link").click(function() {
+        $(".mobile__menu__container").addClass("show")
+        $(".mobile__menu__container__wrapper").addClass("show")
+        $(".mmc__close").addClass("show")
+        $("body").addClass('hidden')
+    })
+    $(".mobile__menu__container__wrapper").click(function() {
+        $(".mobile__menu__container").removeClass("show")
+        $(".mobile__menu__container__wrapper").removeClass("show")
+        $("body").removeClass('hidden')
+        $(".mmc__close").removeClass("show")
+    })
+    $(".mmc__close").click(function() {
+       $(".mobile__menu__container").removeClass("show")
+        $(".mobile__menu__container__wrapper").removeClass("show")
+        $("body").removeClass('hidden') 
+        $(".mmc__close").removeClass("show")
+    })
+</script>

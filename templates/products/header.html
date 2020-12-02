@@ -35,7 +35,8 @@
         </span>
         </div>
     </div>
-    <div class="header__second__catalog__mobile">
+    <div class="header__second__catalog__mobile"
+    id="menu__link">
         <div class="header__second__catalog__mobile__items">
             <i class="gg-menu-left-alt"></i>
             <span>
@@ -83,6 +84,9 @@
     </div>
 </div>
 
+
+    {% include './blocks/mobile__menu__container.html' %}
+    {% include './blocks/menu__container.html' %}
 
 <script>
     $(".header__second__catalog").click(function() {

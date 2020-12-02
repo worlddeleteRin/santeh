@@ -23,7 +23,7 @@
     // loadProducts()
 
     function loadProducts() {
-        console.log('start function')
+        // console.log('start function')
         $.ajax({
             url: "{% url 'products:load_products_ajax' %}", 
             data: {
@@ -102,7 +102,6 @@
 
     function getFilters(filters_all) {
         // console.log(filters_all)
-
         const csrftoken = Cookies.get('csrftoken');
         $.ajax({
             // type: 'GET',
@@ -119,9 +118,11 @@
                 var active_filters = data['active_filters']
                 var checked_filters = data['checked_filters']
                 filterFilters(active_filters, checked_filters)
+                setCheckedFiltersWidget()
             } 
         })
     }
+
     function filterFilters(active_filters, checked_filters) {
         if (active_filters.length > 0) {
             console.log(checked_filters)
@@ -169,6 +170,39 @@
             $(current_content).html(all_filters)
         }
     }
+
+
+    function setCheckedFiltersWidget() {
+        checked_filters = getCheckedFilters()
+        // console.log('checked filters are', checked_filters)
+        if (checked_filters.length > 0) {
+            $(".active_filters_list").html('')
+            for (i = 0; i < checked_filters.length; i++) {
+                var name = $(checked_filters[i]).children('div > span').text()
+                var id = $(checked_filters[i]).attr("value")
+                // console.log('name is ', name)
+                $(".active_filters_list").append(
+                "<div class='active_filter_item'><span class='active_filter_item_link' value='${id}'>${name}<i class='fa fa-close'></i></span></div>".replace('${id}', id).replace('${name}', name)
+                )
+            }
+        } else {
+            $(".active_filters_list").html('')
+        }
+    }
+
+    function getCheckedFilters() {
+        filter_items = $(".filter__content__item.active")
+        return filter_items
+    }
+
+    $('body').on('click', '.active_filter_item_link', function() {
+        filter_value = $(this).attr("value")
+        current_item = $(".filter__content__item#filter-item-" + filter_value)
+        $(current_item).removeClass("active")
+        filterProducts()
+        var filters_all = collectFilters()
+        getFilters(filters_all) 
+    })
 
     
 </script>

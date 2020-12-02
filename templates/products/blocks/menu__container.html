@@ -1,0 +1,25 @@
+<div class="menu__container">
+    <div class="menu__categories">
+        {% for category in categories %}
+            <a class="menu__category"
+            href="{% url 'products:category' category.id %}">
+                <img src="https://placehold.it/500x500" alt="">
+                <span>
+                    {{ category.name }}
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+<script>
+    $(".header__second__catalog").click(function() {
+        showMenuContainer()
+    })
+
+    function showMenuContainer() {
+        $(".menu__container").toggleClass("show")
+        $("body").toggleClass("hidden")
+    }
+ </script>

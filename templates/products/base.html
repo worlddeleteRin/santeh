@@ -16,6 +16,9 @@
     <script src="{% static 'plugins/jquery.magnific-popup.js' %}"></script>
     <link rel="stylesheet" href="{% static 'plugins/magnific-popup.css' %}">
 
+    <script src="{% static 'js/wayp/noframework.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/wayp/sticky.min.js' %}"></script>
+
     <script src="https://kit.fontawesome.com/bca16a3855.js" crossorigin="anonymous"></script>
     <link href='https://css.gg/css' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -69,6 +72,11 @@
     <script src="{% static 'plugins/el-pagination/el-pagination.js' %}"></script>
 
     <script>
+
+var sticky = new Waypoint.Sticky({
+    element: $('.main__header__second'), // Add in your CSS selector sticky target
+    // direction: 'down right',
+  })
 
 
 
@@ -181,8 +189,6 @@ function updateCartTotal() {
         scrollTop: $("#scroll_to_top").offset().top
     }, 1200);
         })
-
-        
 
 
     </script>

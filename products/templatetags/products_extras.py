@@ -33,6 +33,11 @@ def modify_imgsrc(imgsrc):
     imgsrc = imgsrc.replace('/static/images/products/', '')
     return imgsrc
 
+@register.simple_tag
+def sort_attributeitems(attr_items_set):
+    sorted_result = attr_items_set.order_by('name')
+    return sorted_result 
+
 # @register.simple_tag
 # def check_filter(products, filter_id):
 #     print('it works')

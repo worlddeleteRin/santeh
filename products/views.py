@@ -48,6 +48,7 @@ def index(request):
         sale_price__gte = 1
     )
     stock_products = stock_products[:30]
+    products = products[:50]
 
     template = 'products/index.html'
     page_template='products/blocks/products_list.html'
@@ -69,11 +70,13 @@ def product(request, product_id):
     session_key = get_session_key(request)
     fav = get_or_create_favorite(request)
     current_product = Product.objects.get(id = product_id)
+    categories = Category.objects.all()
     return render(request, 'products/product.html', {
         'product': current_product,
         'fav_main': fav,
         'cart': cart,
         'session_key': session_key,
+        'categories': categories,
     })
 
 
@@ -122,6 +125,7 @@ def category(request, cat_id):
     session_key = get_session_key(request)
     fav = get_or_create_favorite(request)
     print('cart, session_key, fav got')
+    categories = Category.objects.all()
     
     current_cat = Category.objects.get(
         id = cat_id,
@@ -146,6 +150,7 @@ def category(request, cat_id):
         'session_key': session_key,
         'current_cat': current_cat,
         'not_active_filters': not_active_filters,
+        'categories': categories,
         # 'active_filter_items': active_filter_items,
     }
     if request.is_ajax():

@@ -15,7 +15,7 @@
 
         {% modify_imgsrc product.imgsrc as imgsrc %}
         <a href="{% url 'products:product' product.id %}">
-        <img src="{% static 'images/products/'%}{{imgsrc}}" alt="">
+        <img src="{% static 'images/products'%}{{imgsrc}}" alt="">
         </a>
     </div>
 

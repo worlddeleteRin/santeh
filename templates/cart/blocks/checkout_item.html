@@ -11,7 +11,7 @@ id="{{ item.id }}">
     <div class="cart__container__products__item__info__container">
         
         <img class="cart__container__products__item__img"
-    src="{% static 'images/products/'%}{{imgsrc}}">
+    src="{% static 'images/products'%}{{imgsrc}}">
         <div class="cart__container__products__item__info">
             <div class="cart__container__products__item__info__name">
                 <a href="{% url 'products:product' item.pr_id %}">
