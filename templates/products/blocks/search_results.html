@@ -1,0 +1,47 @@
+{% load products_extras %}
+{% load static %}
+
+<div class="search__results">
+
+    {% if filter_items.count > 0 %}
+
+    <span class="goods_found">
+    Товаров найдено:
+    <span>
+         {{ items_count }} 
+    </span>
+    </span>
+    
+    {% for item in filter_items  %}
+    <a class="search__result__item"
+    href="{% url 'products:product' item.id %}">
+        <div class="search__result__item__img">
+        {% modify_imgsrc item.imgsrc as imgsrc %}
+            <img src="{% static 'images/products'%}{{imgsrc}}" alt="">
+        </div>
+        <div class="search__result__item__info">
+            <div class="search__result__item__name">
+                {{ item.name }}
+            </div>
+            <div class="search__result__item__price">
+                {{ item.price }}
+            </div>
+        </div>  
+    </a>
+    {% endfor %}
+
+    <div class="search__results__button">
+    <span class="search__results__button__link">
+        Смотреть все    
+    </span>
+    </div>
+
+    {% else %}
+        <div class="title_medium_grey">
+        Товаров не найдено
+        </div>
+
+    {% endif %}
+</div>
+
+

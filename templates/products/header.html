@@ -1,30 +1,35 @@
+{% load static %}
 {% include './blocks/h_first.html' %}
 
 
 
 <div class="main__header__second__mobile__logo">
-    <a class="header__second__logo mobile__logo"
+    {% comment %} <a class="header__second__logo mobile__logo"
     href="{% url 'products:index' %}">
         <img src="https://placehold.it/250x100" alt="">
-    </a>
+    </a> {% endcomment %}
+
     <div class="header__second__search">
         <form
         class="header__second__search__form">
             {% csrf_token %}
             <input type="text" class="input_search"
             name="search_input"
+            autocomplete="off"
+            id="search_input_form"
             placeholder="Искать">
             <button class="input_submit">
                 <i class="gg-search"></i>
             </button>
         </form>
-    </div>
+    </div> 
+
 </div>
 
 <div class="main__header__second">
     <a class="header__second__logo logo__big"
     href="{% url 'products:index' %}">
-        <img src="https://placehold.it/250x100" alt="">
+        <img src="{% static 'images/logo.svg' %}" alt="">
     </a>
     <div class="header__second__catalog">
         <div class="header__second__catalog__items">
@@ -50,13 +55,16 @@
         class="header__second__search__form">
             {% csrf_token %}
             <input type="text" class="input_search"
+            autocomplete="off"
             name="search_input"
+            id = "search_input_form"
             placeholder="Искать">
             <button class="input_submit">
                 <i class="gg-search"></i>
             </button>
         </form>
-    </div>
+    </div> 
+    
     <div class="header__second__icons">
         <a class="header__second__icons__item
         header__favorite"
@@ -78,15 +86,16 @@
                 </span>
             </div>
         </a>
-        <a class="header__second__icons__item account__big">
+        {% comment %} <a class="header__second__icons__item account__big">
             <svg height="24" viewBox="0 0 20 20" width="24"><path d="M16.984 14.506V17H3.016v-2.494C4.47 11.794 6.797 10.438 10 10.438s5.531 1.356 6.984 4.068zM10 11.938c-2.528 0-4.295.958-5.484 2.961v.6h10.968v-.6c-1.19-2.003-2.956-2.961-5.484-2.961zm3.686-6.384a3.686 3.686 0 11-7.372 0 3.686 3.686 0 017.372 0zm-1.5 0a2.186 2.186 0 10-4.372 0 2.186 2.186 0 004.372 0z"></path></svg>
-        </a>
+        </a> {% endcomment %}
     </div>
 </div>
 
 
     {% include './blocks/mobile__menu__container.html' %}
     {% include './blocks/menu__container.html' %}
+
 
 <script>
     $(".header__second__catalog").click(function() {

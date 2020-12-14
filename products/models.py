@@ -6,6 +6,8 @@ from django.db import models
 class Category(models.Model):
     slug = models.CharField(default = '', max_length = 300)
     name = models.CharField(default = '', max_length = 300)
+    imgsrc = models.ImageField(upload_to="static/images/products", default = None, blank = True )
+
     def __str__(self):
         return self.slug + self.name
         
@@ -29,7 +31,7 @@ class Product(models.Model):
     sale_price = models.IntegerField(default = 0)
     description = models.CharField(default = '', max_length = 2000)
     # imgsrc = models.ImageField(upload_to='static/images', blank = True, null = True)
-    imgsrc = models.ImageField(upload_to="static/images/products", default = '')
+    imgsrc = models.ImageField(upload_to="static/images/products", default = None, blank = True, null = True)
     def __str__(self):
         return self.category.slug + self.name 
     def discount_perc(self):

@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% load products_extras %}
+
+{% block content %}
+
+
+    
+    <div class="nice__title__center"
+    style="padding: 20 0;">
+        Результаты поиска по запросу "
+        {{ s_query }}
+        "
+    </div>
+
+    {% if products.count > 0 %}
+
+     <div class="products__list__wrapper">
+
+         {% include './blocks/products_list.html' %} 
+ 
+      </div> 
+      {% else %}
+        <div class="title_medium_grey">
+        Товаров по вашему запросу не найдено
+    </div>
+    {% endif %} 
+
+{% endblock content %}
+

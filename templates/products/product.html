@@ -49,14 +49,14 @@
                     {% if product.has_sale %}
                     
                     <span class="product__main__container__second__sale">
-                        950 &#8381;
+                        {{ product.sale_price }} &#8381;
                     </span>
                     <span class="product__main__container__second__old">
                         {{ product.price }} &#8381;
                     </span>
                     {% else %}
                         <span class="product__main__container__second__price">
-                        950 &#8381;
+                        {{ product.price }} &#8381;
                     </span>
                     {% endif %}
                 </div>

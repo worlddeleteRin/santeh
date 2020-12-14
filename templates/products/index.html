@@ -14,16 +14,16 @@
 
    {% include './blocks/space20.html' %}
 
-   {% include './blocks/products_slider.html' %}
+   {% comment %} {% include './blocks/products_slider.html' %} {% endcomment %}
 
    {% include './blocks/space20.html' %}
 
 
-      <div class="products__list__wrapper">
+      {% comment %} <div class="products__list__wrapper">
 
          {% include './blocks/products_list.html' %} 
  
-      </div> 
+      </div>  {% endcomment %}
 
    
 {% endblock content %}

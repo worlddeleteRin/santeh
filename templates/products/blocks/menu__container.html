@@ -1,9 +1,14 @@
+{% load products_extras %}
+{% load static %}
 <div class="menu__container">
     <div class="menu__categories">
         {% for category in categories %}
             <a class="menu__category"
             href="{% url 'products:category' category.id %}">
-                <img src="https://placehold.it/500x500" alt="">
+                {% if category.imgsrc %}
+                {% modify_imgsrc category.imgsrc as imgsrc %}
+                <img src="{% static 'images/products'%}{{imgsrc}}" alt="">
+                {% endif %}
                 <span>
                     {{ category.name }}
                 </span>
