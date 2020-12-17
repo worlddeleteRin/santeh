@@ -46,7 +46,11 @@
     display: flex;
     max-height: 100px;
     span {
-        font-size: 18px;
+        max-width: 99%;
+        font-size: calc(10px + 0.7vw);
         padding: 0 5;
+        @media (max-width: 500px) {
+            padding: 0;
+        }
     }
 }

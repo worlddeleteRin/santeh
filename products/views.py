@@ -384,6 +384,22 @@ def search_form(request):
         'items_count': items_count,
     })
 
+def contacts(request):
+    categories = Category.objects.all()
+    not_active_filters = get_not_active_filters()
+    cart = get_or_create_cart(request)
+    session_key = get_session_key(request)
+    fav = get_or_create_favorite(request)
+
+    template = 'products/contacts.html'
+    context = {
+        'fav_main': fav,
+        'cart': cart,
+        'categories': categories,
+        'session_key': session_key,
+        'not_active_filters': not_active_filters,
+    }
+    return render(request, template, context)
 
 
 

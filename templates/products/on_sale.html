@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    {% if products.count > 0 %}
+
     <div>
     
     <div class="products__list__wrapper">
@@ -11,5 +13,30 @@
     </div> 
 
     </div>
+        {% else %}
+        {% include './blocks/space20.html' %}
+{% include './blocks/space20.html' %}
+<div class="favorite__empty"
+id="favorite_empty_block">
+    {% include './blocks/space20.html' %}
+    {% include './blocks/space20.html' %}
+    <span>
+        На данный момент товаров по скидке нет
+    </span>
+    <p></p>
+
+    {% include './blocks/space20.html' %}
+    {% include './blocks/space20.html' %}
+    <div class="continue__shopping">
+        <a id="continue__shopping"
+        href="{% url 'products:index' %}">
+            Продолжить покупки
+        </a>
+    </div>
+    {% include './blocks/space20.html' %}
+    {% include './blocks/space20.html' %}
+    {% include './blocks/space20.html' %}
+</div>
+    {% endif %}
 
 {% endblock content %}

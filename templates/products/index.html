@@ -6,13 +6,16 @@
 
    {% include './blocks/main__slider.html' %}
 
-   {% include './blocks/banner1.html' %}
+   {% comment %} {% include './blocks/banner1.html' %} {% endcomment %}
+   {% include './blocks/countdown.html' %}
 
    {% include './blocks/space20.html' %}
 
    {% include './blocks/categories.html' %}
 
    {% include './blocks/space20.html' %}
+
+   
 
    {% comment %} {% include './blocks/products_slider.html' %} {% endcomment %}
 
@@ -24,6 +27,10 @@
          {% include './blocks/products_list.html' %} 
  
       </div>  {% endcomment %}
+
+      {% for category in categories  %}
+         
+      {% endfor %}
 
    
 {% endblock content %}

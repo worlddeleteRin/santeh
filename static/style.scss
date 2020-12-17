@@ -221,6 +221,7 @@
     }
 }
 
+
 body {
     // margin: 0px;
     //  background-color: $bg-nice;
@@ -310,3 +311,103 @@ body.hidden {
 
 
 
+
+// countdown styles
+.countdown__button {
+    padding: 60 0 60 0;
+    text-align: center; 
+    a {
+        text-decoration: none;
+        font-family: 'main_bold';
+        padding: 15 50;
+        background-color: $main-color;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+.countdown__header {
+    text-align: center;
+    padding: 40 0;
+    color: white;
+    font-size: calc(35px + 1vw);
+    font-family: 'main_bold';
+}
+.count__wrapper {
+    background-color: $sale-price;
+    height: calc(400px +1vh);
+}
+#count__container {
+    margin: 0px auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.simply-section {
+    width: 100%;
+}
+.simply-section div {
+    background-color: white;
+    color: black;
+    // width: 25%;
+    padding: 30 0;
+    margin: 0 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.simply-amount {
+    font-size: 40px;
+    font-family: 'main_ebold';
+}
+
+
+
+// footer code is here
+.footer__wrapper {
+    padding: 30 0;
+    background-color: $bg-nice2;
+}
+.footer__container {
+    // align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer__block {
+    width: 25%;
+    margin: 0 30;
+    &__title {
+        font-size: calc(17px + 0.1vw);
+        margin: 5 0;
+        font-family: 'main_bold';
+        // color: $main-color;
+    }
+    &__item {
+        font-size: 16px;
+        margin: 5 0;
+        &__link {
+            text-decoration: none;
+            color: black;
+            // font-family: 'main_medium';
+        }
+        &__tel {
+            text-decoration: none;
+            color: $main-color;
+        }
+    }
+    @media (max-width: 500px) {
+        width: 90%;
+        text-align: center;
+        margin: 10 5;
+    }
+}
+
+
+// contacts page here
+.contacts__wrapper {
+    margin: calc(40px + 2vw) 0;
+}

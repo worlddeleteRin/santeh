@@ -44,6 +44,12 @@
   max-height: 100px;
 }
 .category__title span {
-  font-size: 18px;
+  max-width: 99%;
+  font-size: calc(10px + 0.7vw);
   padding: 0 5;
+}
+@media (max-width: 500px) {
+  .category__title span {
+    padding: 0;
+  }
 }
