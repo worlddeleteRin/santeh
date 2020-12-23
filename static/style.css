@@ -2147,6 +2147,7 @@
 }
 
 .main__site__wrapper {
+  min-height: 400px;
   margin: 30px auto;
   position: relative;
   display: block;
