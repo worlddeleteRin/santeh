@@ -13,13 +13,10 @@
 
    {% include './blocks/categories.html' %}
 
-   {% include './blocks/space20.html' %}
 
    
 
    {% comment %} {% include './blocks/products_slider.html' %} {% endcomment %}
-
-   {% include './blocks/space20.html' %}
 
 
       {% comment %} <div class="products__list__wrapper">
@@ -28,9 +25,56 @@
  
       </div>  {% endcomment %}
 
-      {% for category in categories  %}
-         
-      {% endfor %}
+   <div class="nice__title__center2">
+      Смесители
+   </div>
+
+   <div class="products__list__wrapper">
+   {% for product in products_smesiteli %}
+      {% include './blocks/product_single.html' %}
+   {% endfor %}
+   </div> 
+
+   <div class="mainpage_catlink__container">
+      <a class="mainpage_catlink" href="
+      {% url 'products:category' 18 %}">
+         Смотреть все
+      </a>
+   </div>
+   
+   <div class="nice__title__center2">
+      Душевая программа
+   </div>
+
+   <div class="products__list__wrapper">
+   {% for product in products_dush %}
+      {% include './blocks/product_single.html' %}
+   {% endfor %}
+   </div> 
+
+   <div class="mainpage_catlink__container">
+      <a class="mainpage_catlink" href="
+      {% url 'products:category' 19 %}">
+         Смотреть все
+      </a>
+   </div>
+
+   <div class="nice__title__center2">
+      Керамика
+   </div>
+
+   <div class="products__list__wrapper">
+   {% for product in products_keramika %}
+      {% include './blocks/product_single.html' %}
+   {% endfor %}
+   </div> 
+
+   <div class="mainpage_catlink__container">
+      <a class="mainpage_catlink" href="
+      {% url 'products:category' 20 %}">
+         Смотреть все
+      </a>
+   </div>
 
    
 {% endblock content %}

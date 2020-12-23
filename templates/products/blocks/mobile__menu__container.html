@@ -7,6 +7,34 @@
 </div>
 
 <div class="mobile__menu__container">
+    <a class="mmc__category mmc__main"
+    href="{% url 'products:index'%}">
+        <span>
+            Главная
+        </span>
+        <i class="fa fa-chevron-right"></i>
+    </a>
+    <a class="mmc__category mmc__main"
+    href="{% url 'products:contacts'%}">
+        <span>
+            Контакты
+        </span>
+        <i class="fa fa-chevron-right"></i>
+    </a>
+    <a class="mmc__category mmc__main"
+    href="{% url 'products:delivery'%}">
+        <span>
+            Доставка
+        </span>
+        <i class="fa fa-chevron-right"></i>
+    </a>
+    <a class="mmc__category mmc__main"
+    href="{% url 'products:payment'%}">
+        <span>
+            Оплата
+        </span>
+        <i class="fa fa-chevron-right"></i>
+    </a>
     <div class="mmc__title">
         <span>
             Каталог товаров

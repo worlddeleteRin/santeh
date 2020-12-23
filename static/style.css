@@ -61,6 +61,7 @@
 }
 
 .header__first__container__item {
+  text-decoration: none;
   margin-left: 15px;
   color: #808d9a;
   font-size: 13px;
@@ -2052,6 +2053,51 @@
   border-radius: 5px;
 }
 
+.contacts__wrapper {
+  margin: calc(40px + 2vw) 0;
+}
+
+.contact__main__wrapper {
+  padding: 40 0;
+  margin: 30 20;
+  display: flex;
+}
+@media (max-width: 744px) {
+  .contact__main__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact__main__wrapper .contact__main__block__container {
+    width: 90%;
+  }
+}
+
+.contact__main__block__container {
+  text-align: center;
+  width: 50%;
+}
+
+.contacts__main__block {
+  margin: 30 5;
+}
+
+.contact__main__title {
+  font-size: calc(24px + 1vw);
+  color: #005bff;
+  margin: 10 0;
+}
+
+.contact__main__container {
+  margin: 10 0;
+}
+
+.contact__main__phonelink {
+  text-decoration: none;
+  color: black;
+  font-size: calc(15px + 0.5vw);
+  font-family: "main_medium";
+}
+
 .nice__title2__left {
   text-align: left;
   font-size: 30px;
@@ -2063,6 +2109,13 @@
   text-align: center;
   font-size: 24px;
   font-family: "gpro-text-medium";
+}
+
+.nice__title__center2 {
+  text-align: center;
+  padding: 30 0;
+  font-size: calc(30px + 1vw);
+  font-family: "main_ebold";
 }
 
 .title_medium_grey {
@@ -2441,6 +2494,54 @@ body.hidden {
   }
 }
 
-.contacts__wrapper {
-  margin: calc(40px + 2vw) 0;
+.nice__text {
+  margin: 20 auto;
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+  font-size: calc(18px + 0.6vw);
+  font-family: "main_medium";
+}
+
+.delivery__info {
+  font-family: "main_medium";
+  font-size: calc(12px + 0.3vw);
+}
+
+.payment__title {
+  margin: 20 0 5 0;
+  font-size: calc(13px + 0.5vw);
+  font-family: "main_bold";
+}
+
+.payment__info {
+  margin: 0 0 5 0;
+  font-size: calc(10px + 0.5vw);
+  font-family: "main_medium";
+}
+
+.mobile__menu__container {
+  padding: 20 0;
+}
+
+.mobile__menu__container.show {
+  overflow-y: scroll;
+}
+
+.mmc__main {
+  font-family: "main_bold";
+}
+
+.mainpage_catlink__container {
+  padding: 30 0;
+  text-align: center;
+}
+
+.mainpage_catlink {
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10 30;
+  background-color: #005bff;
+  color: white;
+  font-family: "main_medium";
 }

@@ -1,0 +1,44 @@
+@import './vars.scss';
+// contacts page here
+.contacts__wrapper {
+    margin: calc(40px + 2vw) 0;
+}
+
+// .contact__main__block__container {
+//     margin: 30 0;
+//     padding: 40 0;
+//     // background-color: $bg-nice;
+// }
+.contact__main__wrapper {
+    padding: 40 0;
+    margin: 30 20;
+    display: flex;
+    @media (max-width: 744px) {
+        flex-direction: column;
+        align-items: center;
+        .contact__main__block__container {
+            width: 90%;
+        }
+    }
+}
+.contact__main__block__container {
+    text-align: center;
+    width: 50%;
+}
+.contacts__main__block {
+    margin: 30 5;
+}
+.contact__main__title {
+    font-size: calc(24px + 1vw);
+    color: $main-color;
+    margin: 10 0;
+}
+.contact__main__container {
+    margin: 10 0;
+}
+.contact__main__phonelink {
+    text-decoration: none;
+    color: black;
+    font-size: calc(15px + 0.5vw);
+    font-family: 'main_medium';
+}

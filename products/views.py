@@ -54,6 +54,16 @@ def index(request):
     template = 'products/index.html'
     page_template='products/blocks/products_list.html'
 
+    products_smesiteli = Category.objects.filter(
+        name = 'Смесители'
+    )[0].product_set.all()[:10]
+    products_dush = Category.objects.filter(
+        name = 'Душевая программа'
+    )[0].product_set.all()[:10]
+    products_keramika = Category.objects.filter(
+        name = 'Керамика'
+    )[0].product_set.all()[:10]
+
     context = {
         'fav_main': fav,
         'categories': categories,
@@ -61,6 +71,9 @@ def index(request):
         'stock_products': stock_products,
         'session_key': session_key,
         'cart': cart,
+        'products_smesiteli': products_smesiteli,
+        'products_dush': products_dush,
+        'products_keramika': products_keramika,
     }
     if request.is_ajax():
         template = page_template
@@ -392,6 +405,40 @@ def contacts(request):
     fav = get_or_create_favorite(request)
 
     template = 'products/contacts.html'
+    context = {
+        'fav_main': fav,
+        'cart': cart,
+        'categories': categories,
+        'session_key': session_key,
+        'not_active_filters': not_active_filters,
+    }
+    return render(request, template, context)
+
+def delivery(request):
+    categories = Category.objects.all()
+    not_active_filters = get_not_active_filters()
+    cart = get_or_create_cart(request)
+    session_key = get_session_key(request)
+    fav = get_or_create_favorite(request)
+
+    template = 'products/delivery.html'
+    context = {
+        'fav_main': fav,
+        'cart': cart,
+        'categories': categories,
+        'session_key': session_key,
+        'not_active_filters': not_active_filters,
+    }
+    return render(request, template, context)
+
+def payment(request):
+    categories = Category.objects.all()
+    not_active_filters = get_not_active_filters()
+    cart = get_or_create_cart(request)
+    session_key = get_session_key(request)
+    fav = get_or_create_favorite(request)
+
+    template = 'products/payment.html'
     context = {
         'fav_main': fav,
         'cart': cart,

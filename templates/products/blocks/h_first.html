@@ -1,13 +1,16 @@
 <div class="main__header__first">
     <div class="main__header__first__container">
-        <div class="header__first__container__item">
+        <a href="{% url 'products:contacts' %}"
+        class="header__first__container__item">
             Контакты
-        </div>
-        <div class="header__first__container__item">
+        </a>
+        <a class="header__first__container__item"
+        href="{% url 'products:delivery' %}">
             Доставка
-        </div>
-        <div class="header__first__container__item">
+        </a>
+        <a class="header__first__container__item"
+        href="{% url 'products:payment' %}">
             Оплата
-        </div>
+        </a>
     </div>
 </div>
